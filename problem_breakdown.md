@@ -52,7 +52,7 @@ Account | printStatement()
 
 3. Depositing 100 makes a balance = 100
 
-4. Depositing 100, then withdrawing 30 leaves a balance = 70
+4. Depositing 100, depositing 50, then withdrawing 30 leaves a balance = 120
 
 5. Check it records the date of a deposit
 

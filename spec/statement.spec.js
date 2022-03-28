@@ -33,8 +33,6 @@ describe('Statement', () => {
     
     it('can generate a statement of a single deposit transaction', () => {
       account.deposit(1000, firstDate, mockDepositTransaction)
-      // expect(statement.print()).toEqual("date || credit || debit || balance\r\n10/01/2023 || 1000.00 || || 1000.00"
-      // );
       expect(statement.print()).toEqual("date || credit || debit || balance\n10/01/2023 || 1000.00 || || 1000.00"
       );
     })
