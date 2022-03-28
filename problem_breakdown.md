@@ -59,7 +59,107 @@ Account | printStatement()
 6. Check it records the date of a withdrawal
 
 7. Printing a statement shows all the activity on the account
-    
-### Edge cases
 
-TBC
+### Screenshot of Node output
+
+```
+> const Account = require("./lib/account.js")
+undefined
+> const Transaction = require("./lib/transaction.js")
+undefined
+> const Statement = require("./lib/statement.js")
+undefined
+> myAccount = new Account()
+Account { balance: 0, transactions: [] }
+> myAccount.deposit(100, '11/01/2023')
+Account {
+  balance: 100,
+  transactions: [
+    Transaction {
+      type: 'credit',
+      amount: '100.00',
+      date: '11/01/2023',
+      balanceAfterTransaction: '100.00'
+    }
+  ]
+}
+> myAccount.deposit(50, '12/01/2023')
+Account {
+  balance: 150,
+  transactions: [
+    Transaction {
+      type: 'credit',
+      amount: '100.00',
+      date: '11/01/2023',
+      balanceAfterTransaction: '100.00'
+    },
+    Transaction {
+      type: 'credit',
+      amount: '50.00',
+      date: '12/01/2023',
+      balanceAfterTransaction: '150.00'
+    }
+  ]
+}
+> myAccount.withdraw(30, '12/01/2023')
+Account {
+  balance: 120,
+  transactions: [
+    Transaction {
+      type: 'credit',
+      amount: '100.00',
+      date: '11/01/2023',
+      balanceAfterTransaction: '100.00'
+    },
+    Transaction {
+      type: 'credit',
+      amount: '50.00',
+      date: '12/01/2023',
+      balanceAfterTransaction: '150.00'
+    },
+    Transaction {
+      type: 'debit',
+      amount: '30.00',
+      date: '12/01/2023',
+      balanceAfterTransaction: '120.00'
+    }
+  ]
+}
+> myStatement = new Statement(myAccount)
+Statement {
+  account: Account {
+    balance: 120,
+    transactions: [ [Transaction], [Transaction], [Transaction] ]
+  }
+}
+> myStatement.print()
+[
+  Transaction {
+    type: 'credit',
+    amount: '100.00',
+    date: '11/01/2023',
+    balanceAfterTransaction: '100.00'
+  },
+  Transaction {
+    type: 'credit',
+    amount: '50.00',
+    date: '12/01/2023',
+    balanceAfterTransaction: '150.00'
+  },
+  Transaction {
+    type: 'debit',
+    amount: '30.00',
+    date: '12/01/2023',
+    balanceAfterTransaction: '120.00'
+  }
+]
+'date || credit || debit || balance\n' +
+  '12/01/2023 || || 30.00 || 120.00\n' +
+  '12/01/2023 || 50.00 || || 150.00\n' +
+  '11/01/2023 || 100.00 || || 100.00'
+```
+    
+### Possible Edge Cases
+
+1. Can an account go negative (allowed if overdraft facility?)
+2. Check amounts and dates are correctly formatted

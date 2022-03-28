@@ -51,7 +51,7 @@ This is a JavaScript app which simulates a simple banking system. It allows a us
 
 3. Run `npm install -g jest` or `npm install --save jest`
 
-4. Run `jest` directly in root of your local project by calling `npm test` to run the tests in your command line
+4. Run `jest` directly in root of your local project by calling `npx jest` to run the tests in your command line
 
 
 ## My Approach
@@ -75,6 +75,109 @@ This is a JavaScript app which simulates a simple banking system. It allows a us
 ## Problem Breakdown
 
 Link to my [problem breakdown](https://github.com/nelsonclaire/bank/blob/master/problem_breakdown.md)
+
+------
+
+### Screenshot of Node output 
+
+Run `node` on the command line
+
+```
+> const Account = require("./lib/account.js")
+undefined
+> const Transaction = require("./lib/transaction.js")
+undefined
+> const Statement = require("./lib/statement.js")
+undefined
+> myAccount = new Account()
+Account { balance: 0, transactions: [] }
+> myAccount.deposit(100, '11/01/2023')
+Account {
+  balance: 100,
+  transactions: [
+    Transaction {
+      type: 'credit',
+      amount: '100.00',
+      date: '11/01/2023',
+      balanceAfterTransaction: '100.00'
+    }
+  ]
+}
+> myAccount.deposit(50, '12/01/2023')
+Account {
+  balance: 150,
+  transactions: [
+    Transaction {
+      type: 'credit',
+      amount: '100.00',
+      date: '11/01/2023',
+      balanceAfterTransaction: '100.00'
+    },
+    Transaction {
+      type: 'credit',
+      amount: '50.00',
+      date: '12/01/2023',
+      balanceAfterTransaction: '150.00'
+    }
+  ]
+}
+> myAccount.withdraw(30, '12/01/2023')
+Account {
+  balance: 120,
+  transactions: [
+    Transaction {
+      type: 'credit',
+      amount: '100.00',
+      date: '11/01/2023',
+      balanceAfterTransaction: '100.00'
+    },
+    Transaction {
+      type: 'credit',
+      amount: '50.00',
+      date: '12/01/2023',
+      balanceAfterTransaction: '150.00'
+    },
+    Transaction {
+      type: 'debit',
+      amount: '30.00',
+      date: '12/01/2023',
+      balanceAfterTransaction: '120.00'
+    }
+  ]
+}
+> myStatement = new Statement(myAccount)
+Statement {
+  account: Account {
+    balance: 120,
+    transactions: [ [Transaction], [Transaction], [Transaction] ]
+  }
+}
+> myStatement.print()
+[
+  Transaction {
+    type: 'credit',
+    amount: '100.00',
+    date: '11/01/2023',
+    balanceAfterTransaction: '100.00'
+  },
+  Transaction {
+    type: 'credit',
+    amount: '50.00',
+    date: '12/01/2023',
+    balanceAfterTransaction: '150.00'
+  },
+  Transaction {
+    type: 'debit',
+    amount: '30.00',
+    date: '12/01/2023',
+    balanceAfterTransaction: '120.00'
+  }
+]
+'date || credit || debit || balance\n' +
+  '12/01/2023 || || 30.00 || 120.00\n' +
+  '12/01/2023 || 50.00 || || 150.00\n' +
+  '11/01/2023 || 100.00 || || 100.00'
+```
 
 ------
 
