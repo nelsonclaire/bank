@@ -51,9 +51,7 @@ This is a JavaScript app which simulates a simple banking system. It allows a us
 
 3. Run `npm install -g jest` or `npm install --save jest`
 
-4. Run `npm install --save jest-fetch-mock` for mocks in tests from [jest mock](https://www.npmjs.com/package/jest-fetch-mock)
-
-5. Run `jest` directly in root of your local project by calling `npm test` to run the tests in your command line
+4. Run `jest` directly in root of your local project by calling `npm test` to run the tests in your command line
 
 
 ## My Approach
