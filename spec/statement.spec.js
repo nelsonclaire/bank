@@ -10,7 +10,7 @@ describe('Statement', () => {
   let mockWithdrawalTransaction
 
   beforeEach(() => {
-    account = new Account(Transaction);
+    account = new Account(Transaction)
     statement = new Statement(account)
     firstDate = "10/01/2023"
     secondDate = "13/01/2023"
